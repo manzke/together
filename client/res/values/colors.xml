@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_grey">#D1D7DB</color>
+    <color name="background_active">#F7F9FB</color>
+    <color name="saperion_orange">#E97F21</color><!-- 233/127/33 -->
+</resources>

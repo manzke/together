@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="4"
+    android:rowCount="9"
+    android:descendantFocusability="beforeDescendants"
+    android:onClick="expandItem" >
+
+    <!-- android:descendantFocusability="blocksDescendants"
+    				Column Layout
+       	 _____________________________________
+    	| |_________| |_______________________|
+    	| |         | |__Name_________________|
+    	| |         | |_______________________|
+    	| |         | |__Title________________|
+    	| |         | |_______________________|
+    	| |         | |__Buttons______________|
+    	| |         | |_______________________|
+    	| |_________| |__Tags_________________|
+    	|_|_________|_|_______________________|
+    -->
+
+    <Space
+        android:id="@+id/space_0_0_8"
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_rowSpan="9"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <Space
+        android:id="@+id/space_1_0"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_column="1"
+        android:layout_row="0" 
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <ImageView
+        android:id="@+id/image_preview"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:layout_column="1"
+        android:layout_gravity="left"
+        android:layout_row="1"
+        android:layout_rowSpan="7"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="showItem" />
+
+    <Space
+        android:id="@+id/space_1_8"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_column="1"
+        android:layout_row="8"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <Space
+        android:id="@+id/space_2_0_8"
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:layout_rowSpan="9" 
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <Space
+        android:id="@+id/space_3_0"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_column="3"
+        android:layout_row="0"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_gravity="left"
+        android:hint="Name of the object"
+        android:onClick="showItem"
+        android:singleLine="true"
+        android:text="name"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:inputType="textNoSuggestions"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="true"
+         />
+
+    <Space
+        android:id="@+id/space_3_2"
+        android:layout_width="1dp"
+        android:layout_height="4dp"
+        android:layout_column="3"
+        android:layout_row="2"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <EditText
+        android:id="@+id/edit_text_description"
+        android:layout_gravity="left"
+        android:hint="Description of the chosen object"
+        android:singleLine="true"
+        android:text="description"
+        android:textSize="16sp"
+        android:inputType="textNoSuggestions"
+        android:enabled="false" />
+
+    <Space
+        android:id="@+id/space_3_4"
+        android:layout_width="1dp"
+        android:layout_height="4dp"
+        android:layout_column="3"
+        android:layout_row="4"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <!-- button bar -->
+
+    <LinearLayout
+        android:id="@+id/layout_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_column="3"
+        android:layout_marginBottom="-50dip"
+        android:layout_row="5" >
+
+        <Button
+            android:id="@+id/button_edit"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:text="@string/icon_edit"
+            android:textSize="20sp"
+            android:onClick="editItem" />
+
+        <Button
+            android:id="@+id/button_link"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:text="@string/icon_link"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_download"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:onClick="showItem"
+            android:text="@string/icon_download"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_recycle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:text="@string/icon_recycle"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/space_3_6"
+        android:layout_width="1dp"
+        android:layout_height="4dp"
+        android:layout_column="3"
+        android:layout_row="6"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+    <EditText
+        android:id="@+id/edit_text_tags"
+        android:layout_gravity="left"
+        android:hint="Tags for the chosen object"
+        android:singleLine="true"
+        android:textSize="14sp"
+        android:inputType="textNoSuggestions"
+        android:enabled="false" />
+
+    <Space
+        android:id="@+id/space_3_8"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_column="3"
+        android:layout_row="8"  
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+
+</GridLayout>
