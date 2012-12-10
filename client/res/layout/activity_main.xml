@@ -68,7 +68,6 @@
             android:layout_columnSpan="4"
             android:layout_gravity="left"
             android:layout_row="3"
-            android:layout_rowSpan="4"
             android:drawingCacheQuality="high"
             android:scrollingCache="true"
             android:fastScrollEnabled="true"
@@ -76,7 +75,7 @@
             android:alwaysDrawnWithCache="true"
             android:clickable="true"
             android:choiceMode="singleChoice"
-             />
+             /> <!-- android:layout_rowSpan="4" -->
     </GridLayout>
 
     <GridLayout
