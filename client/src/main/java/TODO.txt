@@ -1,6 +1,0 @@
-- expandable items
-- buttons in items
-- inline editing
-- create a new item
-- upload item
-- send item as mail (similar as "open in" in iOS)

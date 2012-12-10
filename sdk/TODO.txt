@@ -1,0 +1,6 @@
+Timeout setzen können
+Zu nutzenden Client spezifizieren (HttpURLConnection, Apache, different REST-Clients?!)
+together.ping([timeout])
+rechte prüfung bei aktionen auf items
+abfrage, ob man eine aktion auf ein item ausführen kann
+neue items erzeugen

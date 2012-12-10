@@ -1,0 +1,10 @@
+- expandable items
+- buttons in items
+- inline editing
+- create a new item
+- upload item
+- send item as mail (similar as "open in" in iOS)
+
+
+instructions:
+- don't use java 7 (because of a different algorithmn used by jarsigner)
