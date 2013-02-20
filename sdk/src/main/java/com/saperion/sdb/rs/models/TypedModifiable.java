@@ -1,5 +1,6 @@
 package com.saperion.sdb.rs.models;
 
+import com.saperion.common.lang.format.ToStringFormatter;
 
 /**
  * Superclass of all classes that are modifiable and that have a certain type.
@@ -29,6 +30,6 @@ public abstract class TypedModifiable extends Modifiable {
 
 	@Override
 	public String toString() {
-		return "TypedModifiable{" + "type=" + type + "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "type", type);
 	}
 }

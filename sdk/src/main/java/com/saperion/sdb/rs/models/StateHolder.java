@@ -1,9 +1,10 @@
 package com.saperion.sdb.rs.models;
 
+import com.saperion.common.lang.format.ToStringFormatter;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-
 
 /**
  * The class StateHolder.
@@ -19,6 +20,10 @@ public class StateHolder<T extends Enum<T>> {
 
 	public StateHolder(EnumSet<T> states) {
 		this.states = states;
+	}
+
+	public String toString() {
+		return ToStringFormatter.format(getClass(), null, "states", states);
 	}
 
 	public Collection<T> getStates() {

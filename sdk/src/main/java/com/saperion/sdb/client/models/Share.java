@@ -21,7 +21,7 @@ public class Share extends OwnedItem<Share, com.saperion.sdb.rs.models.Share> {
 		this.space = space;
 		com.saperion.sdb.rs.models.User user = new com.saperion.sdb.rs.models.User();
 		user.setId(delegate.getReceiverId());
-		user.setName(delegate.getReceiverName());
+		user.setDisplayname(delegate.getReceiverName());
 		//TODO Replace with Interceptor by Guice and @Lazyiness(exclude={"id","name"} 
 		receiver = new User(user, together){
 			private boolean fullyLoaded;

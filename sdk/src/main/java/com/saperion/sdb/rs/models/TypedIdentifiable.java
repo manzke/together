@@ -2,7 +2,6 @@ package com.saperion.sdb.rs.models;
 
 import com.saperion.common.lang.format.ToStringFormatter;
 
-
 /** Superclass of all classes that are identifiable by an ID and that have a certain type. */
 public abstract class TypedIdentifiable extends Identifiable {
 	private Type type;

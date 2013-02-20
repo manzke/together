@@ -1,12 +1,10 @@
 package com.saperion.sdb.rs.models;
 
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  * The class Localizations.
@@ -17,10 +15,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Localizations {
 
 	private String language;
+	private String hash;
 	private final Map<String, String> locals;
 
 	public Localizations() {
 		locals = new HashMap<String, String>();
+	}
+
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
 	public void setLocale(Locale locale) {
@@ -40,7 +47,7 @@ public class Localizations {
 	}
 
 	@XmlElementWrapper(name = "localizations")
-	public Map<String, String> getLocals() {
+	public Map<String, String> getLocalizations() {
 		return this.locals;
 	}
 

@@ -15,7 +15,7 @@ public abstract class OwnedItem<ClientType, BackendType extends com.saperion.sdb
 		super(delegate, resource, together);
 		com.saperion.sdb.rs.models.User user = new com.saperion.sdb.rs.models.User();
 		user.setId(delegate.getOwnerId());
-		user.setName(delegate.getOwnerName());
+		user.setDisplayname(delegate.getOwnerName());
 		//TODO Replace with Interceptor by Guice and @Lazyiness(exclude={"id","name"} 
 		owner = new User(user, together){
 			private boolean fullyLoaded;

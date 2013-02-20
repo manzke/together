@@ -47,7 +47,11 @@ public class Together implements Closeable {
 	
 	public Together(Config config){
 		StringBuilder builder = new StringBuilder();
-		builder.append(config.protocol.value).append(config.domain).append(":").append(config.port).append("/").append(config.serviceName);
+		builder.append(config.protocol.value).append(config.domain).append(":").append(config
+				.port);
+		if (!Strings.isNullOrEmpty(config.serviceName)){
+			builder.append("/").append(config.serviceName);
+		}
 		
 		ClientConfig clientConfig = new DefaultApacheHttpClientConfig();
 		clientConfig.getClasses().add(JacksonJsonProvider.class);
@@ -56,6 +60,11 @@ public class Together implements Closeable {
 
 		client = Client.create(clientConfig);
 		base = builder.toString();
+
+		//this is necessary, as the if-clause above does not work somehow... ?
+		if (base.endsWith("/")){
+			base = base.substring(0, base.length() - 1);
+		}
 	}
 	
 	public CurrentUser me() throws AuthenticationException, ConnectException{
@@ -232,7 +241,10 @@ public class Together implements Closeable {
 		
 		public Together build() throws Exception {
 			StringBuilder builder = new StringBuilder();
-			builder.append(protocol.value).append(domain).append(":").append(port).append("/").append(serviceName);
+			builder.append(protocol.value).append(domain).append(":").append(port);
+			if (!Strings.isNullOrEmpty(serviceName)){
+				builder.append("/").append(serviceName);
+			}
 			
 			Together together = new Together();
 			ClientConfig config = new DefaultApacheHttpClientConfig();
@@ -241,6 +253,11 @@ public class Together implements Closeable {
 			config.getClasses().add(StreamResultBodyWriter.class);
 			together.client = Client.create(config);
 			together.base = builder.toString();
+
+			//this is necessary, as the if-clause above does not work somehow... ?
+			if (together.base.endsWith("/")){
+				together.base = together.base.substring(0, together.base.length() - 1);
+			}
 			
 			return together;
 		}

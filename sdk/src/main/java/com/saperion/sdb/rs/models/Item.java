@@ -1,19 +1,24 @@
 package com.saperion.sdb.rs.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.saperion.common.lang.format.ToStringFormatter;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-
+import java.util.ArrayList;
+import java.util.List;
 
 /** The class Item. */
+@JsonSerialize(include = Inclusion.NON_NULL)
 public abstract class Item extends ModifiableTypedIdentifiable {
 	private String name;
 	private String description;
+	private String modificationId;
 	private List<String> tags;
 
 	protected Item() {
+
 	}
 
 	public Item(ModelType type) {
@@ -38,6 +43,14 @@ public abstract class Item extends ModifiableTypedIdentifiable {
 		return this;
 	}
 
+	public String getModificationId() {
+		return modificationId;
+	}
+
+	public void setModificationId(String modificationId) {
+		this.modificationId = modificationId;
+	}
+
 	@XmlElementWrapper(name = "tags")
 	@XmlElement(name = "tag")
 	public List<String> getTags() {
@@ -59,7 +72,7 @@ public abstract class Item extends ModifiableTypedIdentifiable {
 
 	@Override
 	public String toString() {
-		return "Item{" + "name='" + name + '\'' + ", description='" + description + '\''
-				+ ", tags=" + tags + "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "name", name, "description",
+				description, "tags", tags, "modificationId", modificationId);
 	}
 }

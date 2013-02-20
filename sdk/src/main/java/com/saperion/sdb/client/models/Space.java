@@ -7,7 +7,7 @@ import java.util.List;
 import com.saperion.sdb.client.Together;
 import com.saperion.sdb.client.exceptions.AuthenticationException;
 import com.saperion.sdb.client.exceptions.ConnectException;
-import com.saperion.sdb.spi.rights.SpaceRight;
+import com.saperion.sdb.spi.rights.ShareRight;
 import com.saperion.sdb.spi.states.SpaceState;
 
 public class Space extends ParentItem<Space, com.saperion.sdb.rs.models.Space> {
@@ -20,11 +20,11 @@ public class Space extends ParentItem<Space, com.saperion.sdb.rs.models.Space> {
 	}
 
 	public void recycle() {
-		delegate.addState(SpaceState.DELETED);
+		delegate.addState(SpaceState.RECYCLED);
 	}
 	
 	public void restore() {
-		delegate.removeState(SpaceState.DELETED);
+		delegate.removeState(SpaceState.RECYCLED);
 	}
 	
 	public List<Share> shares() throws AuthenticationException, ConnectException {
@@ -64,7 +64,7 @@ public class Space extends ParentItem<Space, com.saperion.sdb.rs.models.Space> {
 		return this;
 	}
 
-	public Space setRights(Collection<SpaceRight> rights) {
+	public Space setRights(Collection<ShareRight> rights) {
 		delegate.setRights(rights);
 		return this;
 	}
@@ -78,7 +78,7 @@ public class Space extends ParentItem<Space, com.saperion.sdb.rs.models.Space> {
 		return this;
 	}
 
-	public Space addRight(SpaceRight right) {
+	public Space addRight(ShareRight right) {
 		delegate.addRight(right);
 		return this;
 	}
@@ -88,7 +88,7 @@ public class Space extends ParentItem<Space, com.saperion.sdb.rs.models.Space> {
 		return this;
 	}
 
-	public Collection<SpaceRight> getRights() {
+	public Collection<ShareRight> getRights() {
 		return delegate.getRights();
 	}
 

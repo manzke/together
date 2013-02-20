@@ -1,7 +1,8 @@
 package com.saperion.sdb.rs.models;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.saperion.common.lang.format.ToStringFormatter;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The Comment model.
@@ -12,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Comment extends CreatedTypedIdentifiable {
 
 	private String comment;
+	protected String documentId;
 
 	public Comment() {
 		super(ModelType.COMMENT);
@@ -38,8 +40,25 @@ public class Comment extends CreatedTypedIdentifiable {
 		return this;
 	}
 
+	/**
+	 * Returns the id of the document this comment was set on.
+	 * @return the document id.
+	 */
+	public String getDocumentId() {
+		return documentId;
+	}
+
+	/**
+	 * Sets the id of the document this comment relates to.
+	 * @param documentId the document id.
+	 */
+	public void setDocumentId(String documentId) {
+		this.documentId = documentId;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment{" + "comment='" + comment + '\'' + "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "comment", comment,
+				"documentId", documentId);
 	}
 }

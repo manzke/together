@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 
-
 /**
  * The class ModelType.
  *

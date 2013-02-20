@@ -1,5 +1,6 @@
 package com.saperion.sdb.rs.models;
 
+import com.saperion.common.lang.format.ToStringFormatter;
 
 public abstract class ModifiableTypedIdentifiable extends CreatedTypedIdentifiable {
 
@@ -24,7 +25,6 @@ public abstract class ModifiableTypedIdentifiable extends CreatedTypedIdentifiab
 
 	@Override
 	public String toString() {
-		return "ModifiableTypedIdentifiable{" + "modification=" + modification + "} "
-				+ super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "modification", modification);
 	}
 }

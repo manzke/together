@@ -7,30 +7,49 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.saperion.common.lang.format.ToStringFormatter;
 import com.saperion.sdb.spi.rights.UserRight;
+import com.saperion.sdb.spi.states.UserState;
 
 @XmlRootElement
 public class User extends TypedIdentifiable {
-	private String name;
+	private String displayname;
+	private String firstname;
+	private String lastname;
 	private String email;
 	private String company;
 	private EnumSet<UserRight> rights;
-	private boolean guest;
-
-	private boolean inRecycleBin;
+	private StateHolder<UserState> stateHolder;
 
 	public User() {
 		super(ModelType.USER);
 		rights = EnumSet.noneOf(UserRight.class);
+		this.stateHolder = new StateHolder<UserState>();
 	}
 
-	public String getName() {
-		return name;
+	public String getDisplayname() {
+		return displayname;
 	}
 
-	public User setName(String name) {
-		this.name = name;
+	public User setDisplayname(String displayName) {
+		this.displayname = displayName;
 		return this;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -49,22 +68,6 @@ public class User extends TypedIdentifiable {
 	public User setCompany(String company) {
 		this.company = company;
 		return this;
-	}
-
-	public boolean isGuest() {
-		return guest;
-	}
-
-	public void setGuest(boolean guest) {
-		this.guest = guest;
-	}
-
-	public boolean isInRecycleBin() {
-		return inRecycleBin;
-	}
-
-	public void setInRecycleBin(boolean inRecycleBin) {
-		this.inRecycleBin = inRecycleBin;
 	}
 
 	public User setRights(Collection<UserRight> userRights) {
@@ -94,10 +97,31 @@ public class User extends TypedIdentifiable {
 		return this.rights;
 	}
 
+	public User addState(UserState state) {
+		this.stateHolder.addState(state);
+		return this;
+	}
+
+	public User removeState(UserState state) {
+		this.stateHolder.removeState(state);
+		return this;
+	}
+
+	@XmlElementWrapper(name = "states")
+	@XmlElement(name = "state")
+	public Collection<UserState> getStates() {
+		return this.stateHolder.getStates();
+	}
+
+	public User setStates(Collection<UserState> states) {
+		this.stateHolder.setStates(states);
+		return this;
+	}
+
 	@Override
 	public String toString() {
-		return "User{" + "name='" + name + '\'' + ", email='" + email + '\'' + ", company='"
-				+ company + '\'' + ", rights=" + rights + ", guest=" + guest + "} "
-				+ super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "displayname", displayname,
+				"firstname", firstname, "lastname", lastname, "email", email, "company", company,
+				"rights", rights, "states", stateHolder);
 	}
 }

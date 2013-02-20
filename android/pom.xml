@@ -84,6 +84,16 @@
 						</additionalBuildcommands>
 					</configuration>
 				</plugin>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <configuration>
+                        <sdk>
+                            <!-- platform or api level (api level 4 = platform 1.6) -->
+                            <platform>17</platform>
+                        </sdk>
+                    </configuration>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>

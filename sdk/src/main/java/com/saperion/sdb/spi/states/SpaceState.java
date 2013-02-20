@@ -7,5 +7,11 @@ import javax.xml.bind.annotation.XmlEnum;
  */
 @XmlEnum
 public enum SpaceState {
-	CRYPTED, SYNCHRONIZE, SHARED, DELETED;
+	CRYPTED,
+	SYNCHRONIZE_WEB,
+	SYNCHRONIZE_APP,
+	SYNCHRONIZE_DESKTOP,
+	SHARED,
+	RECYCLED,
+	FAVORED;
 }

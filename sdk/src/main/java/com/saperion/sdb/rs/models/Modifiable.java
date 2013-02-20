@@ -1,5 +1,6 @@
 package com.saperion.sdb.rs.models;
 
+import com.saperion.common.lang.format.ToStringFormatter;
 
 /** Superclass of all classes that are modifiable. */
 public class Modifiable {
@@ -20,6 +21,6 @@ public class Modifiable {
 
 	@Override
 	public String toString() {
-		return "Modifiable{" + "lastModified='" + lastModified + '\'' + '}';
+		return ToStringFormatter.format(getClass(), null, "lastModified", lastModified);
 	}
 }

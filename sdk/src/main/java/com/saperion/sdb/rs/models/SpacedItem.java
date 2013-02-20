@@ -1,5 +1,6 @@
 package com.saperion.sdb.rs.models;
 
+import com.saperion.common.lang.format.ToStringFormatter;
 
 /**
  * The class SpacedItem.
@@ -37,7 +38,7 @@ public class SpacedItem extends Item {
 
 	@Override
 	public String toString() {
-		return "SpacedItem{" + "spaceId='" + spaceId + '\'' + ", parentId='" + parentId + '\''
-				+ "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "spaceId", spaceId,
+				"parentId", parentId);
 	}
 }

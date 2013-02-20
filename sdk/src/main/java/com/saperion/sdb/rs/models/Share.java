@@ -1,13 +1,13 @@
 package com.saperion.sdb.rs.models;
 
-import java.util.Collection;
-import java.util.EnumSet;
+import com.saperion.common.lang.format.ToStringFormatter;
+import com.saperion.sdb.spi.rights.ShareRight;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import com.saperion.sdb.spi.rights.ShareRight;
+import java.util.Collection;
+import java.util.EnumSet;
 
 /**
  * The class Share.
@@ -59,6 +59,9 @@ public class Share extends CreatedTypedIdentifiable {
 	}
 
 	public Share setRights(Collection<ShareRight> rights) {
+		if (null == rights) {
+			throw new IllegalArgumentException("rights may not be null");
+		}
 		if (rights.isEmpty()) {
 			this.rights = EnumSet.noneOf(ShareRight.class);
 		} else {
@@ -69,6 +72,9 @@ public class Share extends CreatedTypedIdentifiable {
 
 	public Share addRight(ShareRight right) {
 		if (null == right) {
+			throw new IllegalArgumentException("right may not be null");
+		}
+		if (null == rights) {
 			rights = EnumSet.of(right);
 		} else {
 			rights.add(right);
@@ -78,8 +84,7 @@ public class Share extends CreatedTypedIdentifiable {
 
 	@Override
 	public String toString() {
-		return "Share{" + "name='" + name + '\'' + ", receiverId='" + receiverId + '\''
-				+ ", receiverName='" + receiverName + '\'' + ", rights=" + rights + "} "
-				+ super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "name", name, "receiverId",
+				receiverId, "receiverName", receiverName, "rights", rights);
 	}
 }

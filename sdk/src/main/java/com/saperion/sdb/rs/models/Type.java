@@ -1,7 +1,8 @@
 package com.saperion.sdb.rs.models;
 
-import java.util.Locale;
+import com.saperion.common.lang.format.ToStringFormatter;
 
+import java.util.Locale;
 
 /**
  * The class Type.
@@ -33,6 +34,6 @@ public class Type {
 
 	@Override
 	public String toString() {
-		return "Type{" + "modelType=" + modelType + '}';
+		return ToStringFormatter.format(getClass(), null, "modelType", modelType);
 	}
 }

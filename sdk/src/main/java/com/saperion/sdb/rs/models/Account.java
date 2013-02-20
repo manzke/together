@@ -1,7 +1,8 @@
 package com.saperion.sdb.rs.models;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.saperion.common.lang.format.ToStringFormatter;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Account extends Typed {
@@ -94,9 +95,9 @@ public class Account extends Typed {
 
 	@Override
 	public String toString() {
-		return "Account{" + "name='" + name + '\'' + ", userLimit=" + userLimit + ", usedUsers="
-				+ usedUsers + ", guestLimit=" + guestLimit + ", usedGuest=" + usedGuest
-				+ ", storageLimit=" + storageLimit + ", uploadLimit=" + uploadLimit
-				+ ", usedStorage=" + usedStorage + "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "name", name, "userLimit",
+				userLimit, "usedUsers", usedUsers, "guestLimit", guestLimit, "usedGuest",
+				usedGuest, "storageLimit", storageLimit, "uploadLimit", uploadLimit, "usedStorage",
+				usedStorage);
 	}
 }

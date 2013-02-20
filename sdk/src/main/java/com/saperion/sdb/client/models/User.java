@@ -6,6 +6,7 @@ import com.saperion.sdb.client.Together;
 import com.saperion.sdb.client.exceptions.AuthenticationException;
 import com.saperion.sdb.client.exceptions.ConnectException;
 import com.saperion.sdb.spi.rights.UserRight;
+import com.saperion.sdb.spi.states.UserState;
 
 public class User extends Item<User, com.saperion.sdb.rs.models.User>{
 	public User(Together together) {
@@ -17,11 +18,11 @@ public class User extends Item<User, com.saperion.sdb.rs.models.User>{
 	}
 		
 	public void recycle() {
-		delegate.setInRecycleBin(true);
+		delegate.addState(UserState.RECYCLED);
 	}
 	
 	public void restore() {
-		delegate.setInRecycleBin(false);
+		delegate.removeState(UserState.RECYCLED);
 	}
 	
 	public StreamResult avatar() throws AuthenticationException, ConnectException{
@@ -39,11 +40,11 @@ public class User extends Item<User, com.saperion.sdb.rs.models.User>{
 	
 	//delegates
 	public String getName() {
-		return delegate.getName();
+		return delegate.getDisplayname();
 	}
 
 	public User setName(String name) {
-		delegate.setName(name);
+		delegate.setDisplayname(name);
 		return this;
 	}
 
@@ -61,15 +62,19 @@ public class User extends Item<User, com.saperion.sdb.rs.models.User>{
 	}
 
 	public boolean isGuest() {
-		return delegate.isGuest();
+		return delegate.getStates().contains(UserState.GUEST);
 	}
 
 	public boolean isInRecycleBin() {
-		return delegate.isInRecycleBin();
+		return delegate.getStates().contains(UserState.RECYCLED);
 	}
 
 	public void setInRecycleBin(boolean inRecycleBin) {
-		delegate.setInRecycleBin(inRecycleBin);
+		if (inRecycleBin){
+			recycle();
+		} else {
+			restore();
+		}
 	}
 
 	public User setRights(Collection<UserRight> userRights) {

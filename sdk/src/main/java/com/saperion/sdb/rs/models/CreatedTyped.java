@@ -2,17 +2,17 @@ package com.saperion.sdb.rs.models;
 
 import com.saperion.common.lang.format.ToStringFormatter;
 
-public abstract class CreatedTypedIdentifiable extends TypedIdentifiable {
+public abstract class CreatedTyped extends Typed {
 
 	private String ownerId;
 	private String ownerName;
 	private String creationDate;
 
-	public CreatedTypedIdentifiable() {
+	public CreatedTyped() {
 		super(ModelType.UNKNOWN);
 	}
 
-	public CreatedTypedIdentifiable(ModelType type) {
+	public CreatedTyped(ModelType type) {
 		super(type);
 	}
 

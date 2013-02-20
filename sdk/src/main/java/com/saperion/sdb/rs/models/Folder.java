@@ -1,12 +1,12 @@
 package com.saperion.sdb.rs.models;
 
-import java.util.Collection;
+import com.saperion.common.lang.format.ToStringFormatter;
+import com.saperion.sdb.spi.states.FolderState;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import com.saperion.sdb.spi.states.FolderState;
+import java.util.Collection;
 
 /** The class Folder. */
 @XmlRootElement
@@ -17,6 +17,11 @@ public class Folder extends SpacedItem {
 	public Folder() {
 		super(ModelType.FOLDER);
 		this.stateHolder = new StateHolder<FolderState>();
+	}
+
+	@Override
+	public String toString() {
+		return ToStringFormatter.format(getClass(), super.toString(), "stateHolder", stateHolder);
 	}
 
 	public Folder addState(FolderState state) {

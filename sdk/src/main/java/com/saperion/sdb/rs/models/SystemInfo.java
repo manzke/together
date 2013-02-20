@@ -1,7 +1,8 @@
 package com.saperion.sdb.rs.models;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.saperion.common.lang.format.ToStringFormatter;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class SystemInfo extends Typed {
@@ -31,7 +32,7 @@ public class SystemInfo extends Typed {
 
 	@Override
 	public String toString() {
-		return "SystemInfo{" + "version='" + version + '\'' + ", buildTime='" + buildTime + '\''
-				+ "} " + super.toString();
+		return ToStringFormatter.format(getClass(), super.toString(), "version", version,
+				"buildTime", buildTime);
 	}
 }
