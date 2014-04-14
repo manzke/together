@@ -63,8 +63,7 @@ public class DevInternalTester {
 		Config config = new Together.Config().protocol(Protocol.HTTP).host("213.61.60.88").port(8600);
 		Together together = config.build();
 		try{
-//			together.login("daniel.manzke@saperion.com", "dameisbaer");
-			together.login("daniel.manzke@swisscom.com", "together");
+			together.login("daniel.manzke@swisscom.com", "password");
 			CurrentUser me = together.me();
 			System.out.println("My User: "+me);
 			List<Space> mySpaces = together.mySpaces();
